@@ -1,0 +1,24 @@
+{             
+    "eventName":"Консервативная вечеринка",
+    "eventAdress" : "Советский пр., 1, Калининград, Калининградская обл., 236000",
+    "beginTime" : "2020-04-28 18:00:00",
+    "endTime" : "2020-04-28 20:00:00",
+    "adminId" : 1,
+    "longitude" : 54.7191248,
+    "latitude" : 20.5012687,
+    "isActive" : false,
+    "isFinished" : false
+},
+{             
+    "eventName":"Разговор на испанском",
+    "eventAdress" : "ул. Пролетарская, 98, Калининград, Калининградская обл., 236029",
+    "beginTime" : "2020-03-28 18:00:00",
+    "endTime" : "2020-03-28 20:00:00",
+    "adminId" : "1",
+    "longitude" : "54.7209343",
+    "latitude" : "20.5060752",
+    "isActive" : false,
+    "isFinished" : false
+},
+
+
