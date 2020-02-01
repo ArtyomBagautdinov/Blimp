@@ -1,0 +1,11 @@
+{ 
+	"blimperUserName":"Gazdalieva",
+	"blimperEmail":"glieva@gmail.com",
+	"blimperPassword":"10203",
+	"blimperFirstName":"Julia",
+	"blimperLastname":"Gazdalieva",
+	"blimperAboutme":"Human, student, operator",
+	"blimperBirthday":"2000-02-20",
+	"blimperAvatar":"https://sun9-44.userapi.com/c846524/v846524313/167845/UqKSUGWIE5Q.jpg",
+	"blimperRegistrationDate":"2020-03-01"
+}

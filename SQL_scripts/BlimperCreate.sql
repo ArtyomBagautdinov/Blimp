@@ -12,6 +12,13 @@ CREATE TABLE Blimper(
 	blimperRegistrationDate timestamp
 );
 
+ALTER TABLE Blimper
+ADD CONSTRAINT blimperRate CHECK(blimperRate>0 and blimperRate<=10.0);
+
+ALTER TABLE Blimper
+ALTER COLUMN blimperRate SET DEFAULT 10.0;
+
+
 
 
 

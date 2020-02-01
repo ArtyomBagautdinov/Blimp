@@ -22,9 +22,32 @@ app.get('/events', async (req, res)=> {
     res.send(JSON.stringify(rows));
   });
 
+  app.get('/blimpers', async (req, res)=> {
+    const rows = await getMethod.readBlimpers();
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows));
+  });
+
+  app.get('/hobbies', async (req, res)=> {
+    const rows = await getMethod.readHobbies();
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows));
+  });
+
+  app.get(`/blimperHobbies&blimperId=:id`, async (req, res)=> {
+    const rows = await getMethod.readBlimperHobbies(req.params.id);
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows));
+  });
+
+  app.get(`/eventHobbies&eventId=:id`, async (req, res)=> {
+    const rows = await getMethod.readEventHobbies(req.params.id);
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows));
+  });
 //////////////////////////////
 
-app.post("/event", async (req, res) => {
+app.post("/events", async (req, res) => {
     let result = {}
     try{
         //console.log(req.body);
@@ -39,7 +62,56 @@ app.post("/event", async (req, res) => {
         res.send(JSON.stringify(result))
     }
    
-})
+});
+
+app.post("/blimpers", async (req, res) => {
+    let result = {}
+    try{
+        await postMethod.addBlimper(req.body);
+        result.success= true;
+    }
+    catch(e){
+        result.success=false;
+    }
+    finally{
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify(result))
+    }
+   
+});
+
+app.post("/hobbies", async (req, res) => {
+    let result = {}
+    try{
+        await postMethod.addHobby(req.body);
+        result.success= true;
+    }
+    catch(e){
+        result.success=false;
+    }
+    finally{
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify(result))
+    }
+   
+});
+
+app.post("/blimperHobbyLink", async (req, res) => {
+    let result = {}
+    try{
+        await postMethod.addBlimperHobbyLink(req.body);
+        result.success= true;
+    }
+    catch(e){
+        result.success=false;
+    }
+    finally{
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify(result))
+    }
+   
+});
+
 
 ///////////////////////////////////////////////
 
@@ -58,8 +130,8 @@ app.delete("/event", async (req,res)=>{
     }
 });
 ///////////////////////////////////////////
-app.listen(4000, ()=>{
-    console.log('Example app listening on port 4000!');
+app.listen(3000, ()=>{
+    console.log('Example app listening on port 3000!');
 });
 
 /////////////////////////////////////////
