@@ -4,16 +4,17 @@ const bodyParser = require('body-parser')
 const postMethod = require('./methods/post_methods')
 const getMethod = require('./methods/get_methods')
 const deleteMethod = require('./methods/delete_methods')
-const instruction = require('./instruction');
+
+
 //////////////////////////
 
 app.use(bodyParser.json())
-
+app.use('/help', express.static('public'));
 ///////////////////////////////////
 
 app.get('/', (req,res)=>{
     res.setHeader("content-type", "application/json");
-    res.send(instruction.instruction);
+    res.send("Перейдите в localhost:3000/help для прочтения руководства");
     
 });
 

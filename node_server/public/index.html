@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Доступные GET запросы:</h1>
+        <h4>/events - получить список всех событий</h4>
+        <h4>/events/id - получить событие с конкретным id</h4>
+        <h4>/blimpers - получить список всех пользователей</h4>
+        <h4>/blimpers/id - получить пользователя с конкретным id </h4>
+        <h4>/hobbies получить список всевозможных увлечений в базе данных</h4>
+        <h4>/blimperHobbies&blimperId=:id - получить список увлечений пользователя с конкретным id</h4>
+        <h4>/eventHobbies&eventId=:id получить список тем которым посвящено событие с конкретным id</h4>
+       
+    <h1>Доступные POST запросы:</h1>
+        <h4>/addEvent - добавить событие </h4>
+        <h2>Пример тела запроса :</h2>
+        <div> 
+        {
+              "eventTitle": "Консервативная анимэ вечеринка",
+              "eventDescription":"Сходка любителей анимэ",
+              "eventOpenPrivacy": true,
+              "eventCityId": 1,
+              "eventAdress": "ул. Пролетарская, 98, Калининград, Калининградская обл., 236029",
+              "eventPlaceName": "Огонёк",
+              "eventMaxParticipants": 20,
+              "eventBegin": "2020-04-28 18:00:00",
+              "eventEnd": "2020-04-28 20:00:00",
+              "isActive": false,
+              "isFinished": false,
+              "eventAvatar": "https://sun9-59.userapi.com/c841223/v841223573/324ec/rRjzSf5EGxA.jpg",
+              "eventLongitude": "54.7209343",
+              "eventLatitude": "20.5060752"
+        }
+        <div>
+        
+        <h4>/addBlimper - добавить пользователя</h4>
+        <h2>Пример тела запроса:</h2>
+        <div>
+        {
+              "blimperUserName":"AwesomeNickname", 
+              "blimperEmail":"leninol@gmail.com",
+              "blimperPassword":"10203",
+              "blimperFirstName":"Henesi",
+              "blimperLastname":"Jackson",
+              "blimperAboutme":"Human, student, operator",
+              "blimperBirthday":"2000-02-20",
+              "blimperAvatar":"https://sun9-44.userapi.com/c846524/v846524313/167845/UqKSUGWIE5Q.jpg",
+              "blimperRegistrationDate":"2020-03-01"
+          
+        }
+        </div>
+
+        <h4>/addHobbie - добавить хобби в базу данных</h4>
+        <h2>Пример тела запроса:</h2>
+        <div>
+        {
+            "hobbieName" : "Игра на гитаре"
+        }
+        </div>
+        
+</body>
+</html>
