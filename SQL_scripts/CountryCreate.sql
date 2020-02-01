@@ -1,0 +1,4 @@
+CREATE TABLE Country(
+	countryId SERIAL PRIMARY KEY,
+	countryName VARCHAR(50) NOT NULL
+);

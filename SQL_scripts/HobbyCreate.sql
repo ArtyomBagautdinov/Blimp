@@ -1,0 +1,4 @@
+CREATE TABLE Hobby(
+	hobbyId SERIAL PRIMARY KEY,
+	hobbyName VARCHAR(30)
+);

@@ -1,0 +1,5 @@
+CREATE TABLE City(
+	cityId SERIAL PRIMARY KEY,
+	cityName VARCHAR(50) NOT NULL,
+	countryId INTEGER REFERENCES Country (countryId) NOT NULL
+);
