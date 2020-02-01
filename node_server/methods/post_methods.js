@@ -1,8 +1,7 @@
 const pool = require('../connection');
 
-
-module.exports.addEvent = async function (reqBody){
-    var sqlQuerry =`INSERT INTO Event(eventTitle,
+module.exports.addEvent = async function (reqBody) {
+    var sqlQuerry = `INSERT INTO Event(eventTitle,
                                       eventDescription,
                                       eventOpenPrivacy,
                                       eventCityId,
@@ -36,16 +35,15 @@ module.exports.addEvent = async function (reqBody){
         await pool.query(sqlQuerry);
         return true
     }
-    catch(e){
+    catch (e) {
         return false;
     }
 }
 
-
-module.exports.addBlimper = async function (reqBody){
+module.exports.addBlimper = async function (reqBody) {
     console.log(reqBody);
-    var sqlQuerry = 
-    `INSERT INTO 
+    var sqlQuerry =
+        `INSERT INTO 
      Blimper(blimperUserName,
              blimperEmail,
              blimperPassword,
@@ -65,62 +63,61 @@ module.exports.addBlimper = async function (reqBody){
                     '${reqBody.blimperAvatar}',
                     '${reqBody.blimperRegistrationDate}');
         `
-        console.log(sqlQuerry);
-        try {
-            await pool.query(sqlQuerry);
-            return true
-        }
-        catch(e){
-            return false;
-        }
+    console.log(sqlQuerry);
+    try {
+        await pool.query(sqlQuerry);
+        return true
+    }
+    catch (e) {
+        return false;
+    }
 }
 
-module.exports.addHobby = async function (reqBody){
+module.exports.addHobby = async function (reqBody) {
     console.log(reqBody);
-    var sqlQuerry = 
-    `INSERT INTO Hobby(hobbyName) VALUES('${reqBody.hobbyName}');`
-        console.log(sqlQuerry);
-        try {
-            await pool.query(sqlQuerry);
-            return true
-        }
-        catch(e){
-            return false;
-        }
+    var sqlQuerry =
+        `INSERT INTO Hobby(hobbyName) VALUES('${reqBody.hobbyName}');`
+    console.log(sqlQuerry);
+    try {
+        await pool.query(sqlQuerry);
+        return true
+    }
+    catch (e) {
+        return false;
+    }
 }
 
-
-module.exports.addBlimperHobbyLink = async function(reqBody){
+module.exports.addBlimperHobbyLink = async function (reqBody) {
     console.log(reqBody);
-    var sqlQuerry = 
-    `INSERT INTO BlimperHobby(hobbyId,blimperId) VALUES(${reqBody.hobbyId},${reqBody.blimperId});`
-        console.log(sqlQuerry);
-        try {
-            await pool.query(sqlQuerry);
-            return true
-        }
-        catch(e){
-            return false;
-        }
+    var sqlQuerry =
+        `INSERT INTO BlimperHobby(hobbyId,blimperId) VALUES(${reqBody.hobbyId},${reqBody.blimperId});`
+    console.log(sqlQuerry);
+    try {
+        await pool.query(sqlQuerry);
+        return true
+    }
+    catch (e) {
+        return false;
+    }
 }
 
-module.exports.addEventHobbyLink = async function(reqBody){
+module.exports.addEventHobbyLink = async function (reqBody) {
     console.log(reqBody);
-    var sqlQuerry = 
-    `INSERT INTO EventHobby(hobbyId,
+    var sqlQuerry =
+        `INSERT INTO EventHobby(hobbyId,
                             eventId
                             ) 
                  VALUES( ${reqBody.hobbyId},
                          ${reqBody.eventId}
                         );`
-        console.log(sqlQuerry);
-        try {
-            await pool.query(sqlQuerry);
-            return true
-        }
-        catch(e){
-            return false;
-        }
+    console.log(sqlQuerry);
+    try {
+        await pool.query(sqlQuerry);
+        return true
+    }
+    catch (e) {
+        return false;
+    }
 }
 
 
