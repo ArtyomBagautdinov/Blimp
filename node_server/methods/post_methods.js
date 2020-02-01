@@ -104,4 +104,24 @@ module.exports.addBlimperHobbyLink = async function(reqBody){
         }
 }
 
+module.exports.addEventHobbyLink = async function(reqBody){
+    console.log(reqBody);
+    var sqlQuerry = 
+    `INSERT INTO EventHobby(hobbyId,
+                            eventId
+                            ) 
+                 VALUES( ${reqBody.hobbyId},
+                         ${reqBody.eventId}
+                        );`
+        console.log(sqlQuerry);
+        try {
+            await pool.query(sqlQuerry);
+            return true
+        }
+        catch(e){
+            return false;
+        }
+}
+
+
 

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const postMethod = require('./methods/post_methods')
 const getMethod = require('./methods/get_methods')
 const deleteMethod = require('./methods/delete_methods')
-
+const instruction = require('./instruction');
 //////////////////////////
 
 app.use(bodyParser.json())
@@ -12,18 +12,31 @@ app.use(bodyParser.json())
 ///////////////////////////////////
 
 app.get('/', (req,res)=>{
-    res.setHeader("content-type", "application/json")
-    res.send('Hellow World!');
+    res.setHeader("content-type", "application/json");
+    res.send(instruction.instruction);
+    
 });
 
-app.get('/events', async (req, res)=> {
-    const rows = await getMethod.readEvents();
+  app.get('/events', async (req, res)=> {
+        const rows = await getMethod.readEvents();
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify(rows));
+    });
+
+  app.get('/events/:id', async (req, res)=> {
+    const rows = await getMethod.readEvent(req.params.id);
     res.setHeader("content-type", "application/json")
     res.send(JSON.stringify(rows));
   });
 
   app.get('/blimpers', async (req, res)=> {
     const rows = await getMethod.readBlimpers();
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows));
+  });
+
+  app.get('/blimpers/:id', async (req, res)=> {
+    const rows = await getMethod.readBlimper(req.params.id);
     res.setHeader("content-type", "application/json")
     res.send(JSON.stringify(rows));
   });
@@ -47,7 +60,7 @@ app.get('/events', async (req, res)=> {
   });
 //////////////////////////////
 
-app.post("/events", async (req, res) => {
+app.post("/addEvent", async (req, res) => {
     let result = {}
     try{
         //console.log(req.body);
@@ -64,7 +77,7 @@ app.post("/events", async (req, res) => {
    
 });
 
-app.post("/blimpers", async (req, res) => {
+app.post("/addBlimper", async (req, res) => {
     let result = {}
     try{
         await postMethod.addBlimper(req.body);
@@ -80,7 +93,7 @@ app.post("/blimpers", async (req, res) => {
    
 });
 
-app.post("/hobbies", async (req, res) => {
+app.post("/addHobbie", async (req, res) => {
     let result = {}
     try{
         await postMethod.addHobby(req.body);
@@ -112,10 +125,26 @@ app.post("/blimperHobbyLink", async (req, res) => {
    
 });
 
+app.post("/eventHobbyLink", async (req, res) => {
+    let result = {}
+    try{
+        await postMethod.addEventHobbyLink(req.body);
+        result.success= true;
+    }
+    catch(e){
+        result.success=false;
+    }
+    finally{
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify(result))
+    }
+   
+});
+
 
 ///////////////////////////////////////////////
 
-app.delete("/event", async (req,res)=>{
+app.delete("/deleteEvent", async (req,res)=>{
     let result = {}
     try{
         await deleteMethod.deleteEvent(req.body);

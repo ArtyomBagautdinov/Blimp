@@ -10,9 +10,30 @@ module.exports.readEvents = async function (){
     }
 }
 
+module.exports.readEvent = async function (id){
+    try{
+        const results = await pool.query(`SELECT * FROM Event WHERE eventId=${id}`);
+        return results.rows;
+    }
+    catch(e){
+        return [];
+    }
+}
+
+
 module.exports.readBlimpers = async function (){
     try{
         const results = await pool.query('SELECT * FROM Blimper');
+        return results.rows;
+    }
+    catch(e){
+        return [];
+    }
+}
+
+module.exports.readBlimper = async function (id){
+    try{
+        const results = await pool.query(`SELECT * FROM Blimper WHERE blimperId=${id}`);
         return results.rows;
     }
     catch(e){
@@ -48,9 +69,9 @@ module.exports.readBlimperHobbies = async function (blimperId){
 module.exports.readEventHobbies = async function (eventId){
     var sqlQuerry = `SELECT hobbyName FROM Hobby
                      JOIN EventHobby ON EventHobby.hobbyId = Hobby.hobbyId
-                     JOIN Event ON Event.eventId = EventHobbyHobby.eventId
+                     JOIN Event ON Event.eventId = EventHobby.eventId
                      WHERE Event.eventId = ${eventId};
-                    `
+                     `
     try{
         const results = await pool.query(sqlQuerry);
         return results.rows;
@@ -59,6 +80,9 @@ module.exports.readEventHobbies = async function (eventId){
         return [];
     }
 }
+
+
+
 
 
 
