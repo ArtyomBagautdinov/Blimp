@@ -22,8 +22,10 @@ app.get('/', (req, res) => {
 
 app.get('/events', async (req, res) => {
     const rows = await getMethod.readEvents();
+    const tmpString = JSON.stringify(rows);
+
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 app.get('/events/:id', async (req, res) => {
@@ -179,8 +181,8 @@ app.delete("/deleteBlimper", async (req, res) => {
 
 ///////////////////////////////////////////
 
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!');
+app.listen(4000, () => {
+    console.log('Example app listening on port 4000!');
 });
 
 /////////////////////////////////////////

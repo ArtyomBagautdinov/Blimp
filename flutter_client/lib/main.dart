@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_client/widgets/map.dart';
+import 'package:flutter_client/widgets/map/map.dart';
+import 'package:flutter_client/widgets/map/map_repository.dart';
 
 
 void main() => runApp(App());
 
 
 class App extends StatelessWidget {
-
+  var globalContext;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,8 +15,8 @@ class App extends StatelessWidget {
        title: 'Flutter Redux', 
        home: Scaffold(
          body: MainPage(),
-         floatingActionButton: FloatingActionButton(
-           onPressed:(){},
+         floatingActionButton: FloatingActionButton(    
+           onPressed: (){},      
            child: Icon(Icons.assistant_photo , color: Colors.white),
            backgroundColor: Colors.purple,
             ),
@@ -24,7 +25,6 @@ class App extends StatelessWidget {
       
   }
 }
-
 
 class MainPage extends StatefulWidget {
   const MainPage({ Key key }) : super(key: key);
@@ -36,6 +36,6 @@ class MainPage extends StatefulWidget {
 class _MainPage extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return  MyMap();
+    return  MyMap(Repository());
   }
 }

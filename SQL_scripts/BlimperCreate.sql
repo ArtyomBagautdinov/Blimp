@@ -20,7 +20,19 @@ ALTER COLUMN blimperRate SET DEFAULT 10.0;
 
 
 
-
+CREATE TABLE Blimper {
+	blimperId integer [primary key]
+	blimperUserName varchar
+	blimperEmail varchar
+	blimperPassword varchar
+	blimperFirstName varchar
+	blimperLastName varchar
+	blimperAboutMe text
+	blimperRate real
+	blimperBirthday timestamp
+	blimperAvatar varchar
+	blimperRegistrationDate timestamp
+}
 
 
 
