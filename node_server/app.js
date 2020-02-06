@@ -75,7 +75,6 @@ app.get(`/eventHobbies&eventId=:id`, async (req, res) => {
 app.post("/addEvent", async (req, res) => {
     let result = {}
     try {
-        //console.log(req.body);
         await postMethod.addEvent(req.body);
         result.success = true;
     }
