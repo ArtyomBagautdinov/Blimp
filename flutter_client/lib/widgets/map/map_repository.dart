@@ -13,8 +13,7 @@ import '../event_avatar.dart';
 
 class Repository {
   
-  Future<List<Marker>> getEvent() async {
-    const url = 'https://friendly-seahorse-97.localtunnel.me/events';
+  Future<List<Marker>> getEvent(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {  
       Marker fromJsonMap(Map<String, dynamic> json) {

@@ -30,38 +30,44 @@ app.get('/events', async (req, res) => {
 
 app.get('/events/:id', async (req, res) => {
     const rows = await getMethod.readEvent(req.params.id);
+    const tmpString = JSON.stringify(rows);
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 app.get('/blimpers', async (req, res) => {
     const rows = await getMethod.readBlimpers();
+    const tmpString = JSON.stringify(rows);
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 app.get('/blimpers/:id', async (req, res) => {
     const rows = await getMethod.readBlimper(req.params.id);
+    const tmpString = JSON.stringify(rows);
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 app.get('/hobbies', async (req, res) => {
     const rows = await getMethod.readHobbies();
+    const tmpString = JSON.stringify(rows);
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 app.get(`/blimperHobbies&blimperId=:id`, async (req, res) => {
     const rows = await getMethod.readBlimperHobbies(req.params.id);
+    const tmpString = JSON.stringify(rows);
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 app.get(`/eventHobbies&eventId=:id`, async (req, res) => {
     const rows = await getMethod.readEventHobbies(req.params.id);
+    const tmpString = JSON.stringify(rows);
     res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows));
+    res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
 
 //////////////////////////POST////////////////////////////
@@ -181,8 +187,8 @@ app.delete("/deleteBlimper", async (req, res) => {
 
 ///////////////////////////////////////////
 
-app.listen(4000, () => {
-    console.log('Example app listening on port 4000!');
+app.listen(8000, () => {
+    console.log('Example app listening on port 8000!');
 });
 
 /////////////////////////////////////////
