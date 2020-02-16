@@ -15,12 +15,10 @@ class MyMap extends StatefulWidget {
 class _MyMap extends State<MyMap> {
       List<Marker> _markers;
       bool _isLoading = true;
-
-
-
       @override
       void initState() {
-        widget._repository.getEvent().then((events) {
+        super.initState();
+        widget._repository.getEvent('http://10.0.2.2:8000/events').then((events) {
                                     setState(() {
                                        _isLoading=false;
                                       _markers = events;

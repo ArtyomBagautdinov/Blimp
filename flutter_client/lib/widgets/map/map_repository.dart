@@ -1,18 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:latlong/latlong.dart';
-
 import '../event_avatar.dart';
 
-
-
 class Repository {
-  
   Future<List<Marker>> getEvent(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {  

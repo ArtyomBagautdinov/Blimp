@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const postMethod = require('./methods/post_methods')
-const getMethod = require('./methods/get_methods')
-const deleteMethod = require('./methods/delete_methods')
+const postMethod = require('./http_methods/post_methods')
+const getMethod = require('./http_methods/get_methods')
+const deleteMethod = require('./http_methods/delete_methods')
 
 
 /////////////////////////////////////////////////////
