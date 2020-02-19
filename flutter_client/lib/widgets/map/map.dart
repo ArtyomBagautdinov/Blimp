@@ -18,7 +18,7 @@ class _MyMap extends State<MyMap> {
       @override
       void initState() {
         super.initState();
-        widget._repository.getEvent('http://10.0.2.2:8000/events').then((events) {
+        widget._repository.getEvent('http://192.168.0.8:8000/events').then((events) {
                                     setState(() {
                                        _isLoading=false;
                                       _markers = events;
@@ -66,7 +66,7 @@ class _MyMap extends State<MyMap> {
                     borderStrokeWidth: 0),
                 builder: (context, markers) {
                   return FloatingActionButton(
-                    backgroundColor: Colors.purple,
+                    backgroundColor: Color.fromRGBO(128, 0, 255, 1),
                     child: Text(markers.length.toString()),
                     onPressed: null,
                   );

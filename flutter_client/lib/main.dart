@@ -23,12 +23,21 @@ class App extends StatelessWidget {
              hoverColor: Color.fromRGBO(1, 1, 1, 0),
              highlightColor: Color.fromRGBO(1, 1, 1, 0),
              splashColor: Color.fromRGBO(1, 1, 1, 0),
-             icon: Icon(Icons.menu,color: Colors.black,size: 28), 
+             icon: Icon(
+               Icons.menu,
+               color: Colors.black,
+               size: 28
+               ), 
              onPressed: ()=> _scaffoldKey.currentState.openDrawer()
             )
          ), 
          body: MyMap(Repository()),
-         drawer: AppDrawer()
+         drawer: AppDrawer(),
+         floatingActionButton: FloatingActionButton(
+           backgroundColor: Color.fromRGBO(128, 0, 255, 1),
+           onPressed: (){},
+           child: Icon(Icons.add_location,color: Colors.white)
+           ),
       )
     );
       

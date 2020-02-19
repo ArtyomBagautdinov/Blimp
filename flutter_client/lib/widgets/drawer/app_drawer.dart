@@ -29,12 +29,17 @@ class AppDrawer extends StatelessWidget {
                                       fontSize: 20))),
                           Padding(
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                              child: Text("Войти в профиль",
-                                  style: TextStyle(
-                                      color: Colors.blue,
-                                      backgroundColor: null,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w300)))
+                              child: InkWell(
+                                    child: Text("Войти в профиль",
+                                      style: TextStyle(
+                                          color: Colors.blue,
+                                          backgroundColor: null,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w300)
+                                          ),
+                                    onTap: (){}
+                                  )
+                              )
                         ]))
               ])
             ]),
