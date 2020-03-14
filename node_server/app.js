@@ -1,12 +1,17 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const postMethod = require('./http_methods/post_methods')
-const getMethod = require('./http_methods/get_methods')
-const deleteMethod = require('./http_methods/delete_methods')
-
-
+const mysql = require("mysql")
 /////////////////////////////////////////////////////
+app.use(function(req, res, next){
+	global.connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : 'Les_capitan99'
+    }); 
+	connection.connect();
+	next();
+});
 
 app.use(bodyParser.json())
 
@@ -21,12 +26,23 @@ app.get('/', (req, res) => {
 });
 
 app.get('/events', async (req, res) => {
+    connection.query('SELECT * FROM BlimpDB.Event;', function(err, rows) {
+        if (err) throw err;
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify({"data":rows}));
+        
+    });
+});
+
+/*
+app.get('/events', async (req, res) => {
     const rows = await getMethod.readEvents();
     const tmpString = JSON.stringify(rows);
 
     res.setHeader("content-type", "application/json")
     res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
+
 
 app.get('/events/:id', async (req, res) => {
     const rows = await getMethod.readEvent(req.params.id);
@@ -69,8 +85,9 @@ app.get(`/eventHobbies&eventId=:id`, async (req, res) => {
     res.setHeader("content-type", "application/json")
     res.send(`{ "data": [ ` + JSON.stringify(rows).substring(1,tmpString.length-1)+ `] }`);
 });
-
+*/
 //////////////////////////POST////////////////////////////
+/*
 
 app.post("/addEvent", async (req, res) => {
     let result = {}
@@ -185,9 +202,9 @@ app.delete("/deleteBlimper", async (req, res) => {
 });
 
 ///////////////////////////////////////////
-
-app.listen(8000, () => {
-    console.log('Example app listening on port 8000!');
+*/
+app.listen(3000, () => {
+    console.log('Example app listening on port 3000!');
 });
 
 /////////////////////////////////////////

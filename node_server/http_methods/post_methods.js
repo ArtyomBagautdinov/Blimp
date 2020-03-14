@@ -1,4 +1,4 @@
-const pool = require('../connection');
+const pool = require('../pgconnection');
 
 module.exports.addEvent = async function (reqBody) {
     var sqlQuerry = `INSERT INTO Event(eventTitle,

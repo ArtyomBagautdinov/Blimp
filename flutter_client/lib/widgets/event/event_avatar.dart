@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_client/widgets/event/event_card.dart';
 
 
 class MyEventAvatar extends StatefulWidget {
@@ -36,11 +37,10 @@ class _MyEventAvatarState extends State<MyEventAvatar>{
                  showDialog(
                    context: context,
                    builder: (BuildContext context){
-                      return AlertDialog(
-                                      title: Text(widget.title, style: TextStyle(color: Colors.black)),
-                                      content: Text(widget.description + "\n---------------------------------------------------\n  " + widget.adress, style: TextStyle(color: Colors.black87))
-                                    );
-                      
+                      return EventCard(adress: widget.adress,
+                          title : widget.title,
+                          description: widget.description,
+                          imgLink: widget.imgLink);
                    }
                    );
                 }

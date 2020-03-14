@@ -1,4 +1,4 @@
-const pool = require('../connection');
+const pool = require('../pgconnection');
 
 module.exports.deleteEvent = async function (body) {
     var sqlQuerry = `DELETE FROM Event WHERE eventId = ${body.eventId}`;

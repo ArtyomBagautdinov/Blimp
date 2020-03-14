@@ -1,4 +1,4 @@
-const pool = require('../connection');
+const pool = require('../pgconnection');
 
 module.exports.readEvents = async function () {
     try {
