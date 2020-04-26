@@ -18,7 +18,7 @@ class _MyMap extends State<MyMap> {
       @override
       void initState() {
         super.initState();
-        widget._repository.getEvent('http://192.168.0.8:3000/events').then((events) {
+        widget._repository.getEvent('http://192.168.0.16:3000/events').then((events) {
                                     setState(() {
                                        _isLoading=false;
                                       _markers = events;

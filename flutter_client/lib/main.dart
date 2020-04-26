@@ -66,7 +66,7 @@ class _HomeState extends State<Home>{
                 currentTab = index;
                 currentPage = pages[index];
             }
-            
+
           });
         },
         items: <BottomNavigationBarItem>[
